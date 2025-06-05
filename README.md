@@ -1,36 +1,115 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DreamHouse Mauritania - Real Estate Platform
 
-## Getting Started
+A modern, full-stack real estate platform specifically designed for the Mauritanian market, featuring beautiful UI/UX and comprehensive property management.
 
-First, run the development server:
+## 🏗️ Project Structure
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+\`\`\`
+house-store/
+├── frontend/          # Angular application
+│   ├── src/app/      # Angular components and services
+│   └── src/assets/   # Static assets
+└── backend/          # Spring Boot application
+    ├── src/main/java/com/dreamhouse/
+    │   ├── controller/   # REST API controllers
+    │   ├── model/       # JPA entities
+    │   ├── repository/  # Data access layer
+    │   └── service/     # Business logic
+    └── src/main/resources/
+\`\`\`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Getting Started
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Prerequisites
+- Node.js 18+ and npm
+- Angular CLI 17+
+- Java 17+
+- PostgreSQL 12+
+- Maven 3.6+
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Frontend Setup (Angular)
+\`\`\`bash
+cd frontend
+npm install
+ng serve
+\`\`\`
+The frontend will be available at `http://localhost:4200`
 
-## Learn More
+### Backend Setup (Spring Boot)
+1. Create PostgreSQL database:
+\`\`\`sql
+CREATE DATABASE dreamhouse_db;
+CREATE USER dreamhouse_user WITH PASSWORD 'dreamhouse_password';
+GRANT ALL PRIVILEGES ON DATABASE dreamhouse_db TO dreamhouse_user;
+\`\`\`
 
-To learn more about Next.js, take a look at the following resources:
+2. Run the Spring Boot application:
+\`\`\`bash
+cd backend
+mvn spring-boot:run
+\`\`\`
+The backend API will be available at `http://localhost:8080`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🇲🇷 Mauritania-Specific Features
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Cities
+- Nouakchott, Nouadhibou, Kiffa, Kaédi, Atar, and more
 
-## Deploy on Vercel
+### Neighborhoods (Quartiers)
+- **Nouakchott**: Tevragh Zeina, Ksar, Riyadh, Arafat, Dar Naim, Sebkha, El Mina
+- **Nouadhibou**: Numerot, Cansado, Baghdad, Qhairaat
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Features
+- Prices in MRU (Mauritanian Ouguiya)
+- Local agent profiles
+- Cultural adaptation for local market
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🎨 File Extensions Used
+
+- `.ts` - TypeScript files (Angular components, services)
+- `.html` - HTML templates (Angular)
+- `.scss` - Sass stylesheets (Angular)
+- `.java` - Java files (Spring Boot backend)
+- `.json` - Configuration files
+
+## 📱 Key Features
+
+1. **Advanced Search**: Filter by city and quartier
+2. **Beautiful UI**: Modern design with animations
+3. **Responsive**: Works on all devices
+4. **Real Estate Focused**: Tailored for Mauritanian market
+
+## 🔧 Commands
+
+### Frontend
+\`\`\`bash
+ng serve          # Start development server
+ng build          # Build for production
+ng test           # Run tests
+\`\`\`
+
+### Backend
+\`\`\`bash
+mvn spring-boot:run    # Start Spring Boot server
+mvn clean package     # Build JAR file
+\`\`\`
+
+---
+
+**DreamHouse Mauritania** - Your perfect home in Mauritania! 🏠✨
+\`\`\`
+
+Perfect! Now you have a **complete Angular frontend** and **Spring Boot backend** with:
+
+✅ **Proper Angular Structure** - Uses `.ts`, `.html`, `.scss` files  
+✅ **Mauritania-Specific Filtering** - Cities and quartiers (neighborhoods)  
+✅ **Beautiful Design** - Modern UI with animations  
+✅ **Separated Projects** - Clear frontend/backend separation  
+✅ **Working Commands** - `ng serve` will work properly  
+
+**To run the project:**
+
+1. **Frontend**: `cd frontend && npm install && ng serve`
+2. **Backend**: `cd backend && mvn spring-boot:run`
+
+The Angular app will run on `http://localhost:4200` and Spring Boot on `http://localhost:8080`! 🚀
