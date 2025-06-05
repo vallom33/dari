@@ -1,8 +1,8 @@
 {
   "name": "dreamhouse-frontend",
   "version": "0.0.0",
-  "scripts": {
-  "build": "ng build --configuration production"
+"scripts": {
+  "build": "npx -p @angular/cli ng build --configuration=production"
 }
 ,
   "private": true,
