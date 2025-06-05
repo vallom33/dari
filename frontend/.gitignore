@@ -1,0 +1,19 @@
+# dependencies
+/node_modules
+/.angular
+/dist
+/tmp
+/.vscode
+
+# IDEs and editors
+*.log
+.DS_Store
+.idea
+*.swp
+
+# Angular build files
+**/dist
+**/build
+
+# Environment files
+.env
