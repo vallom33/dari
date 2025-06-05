@@ -1,0 +1,28 @@
+<header class="header">
+  <nav class="navbar">
+    <!-- Logo -->
+    <div class="logo">
+    </div>
+
+    <!-- Navigation Links -->
+    <div class="nav-links">
+      <a routerLink="/" routerLinkActive="active">الرئيسية</a>
+      <a routerLink="/houses" routerLinkActive="active">العقارات</a>
+      <a routerLink="/about" routerLinkActive="active">من نحن</a>
+      <a routerLink="/contact" routerLinkActive="active">اتصل بنا</a>
+      <!-- New Support Us Link -->
+      <a routerLink="/support" routerLinkActive="active">ادعمنا</a>
+    </div>
+
+    <!-- Buttons -->
+    <div class="nav-buttons">
+      <a href="#" class="btn-outline">المفضلة</a>
+      <a href="#" class="btn-primary">تسجيل الدخول</a>
+    </div>
+
+    <!-- Mobile Menu Toggle -->
+    <button class="mobile-menu-btn" (click)="toggleMenu()">
+      <i class="material-icons">{{ isMenuOpen ? 'close' : 'menu' }}</i>
+    </button>
+  </nav>
+</header>

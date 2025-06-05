@@ -1,0 +1,120 @@
+<div class="about-page">
+  <!-- قسم البطل -->
+  <section class="about-hero">
+    <div class="container">
+      <h1>عن دريم هاوس</h1>
+      <p>شريكك الموثوق في العثور على العقار المثالي في موريتانيا</p>
+    </div>
+  </section>
+
+  <!-- قسم قصتنا -->
+  <section class="our-story">
+    <div class="container">
+      <div class="story-content">
+        <div class="story-text">
+          <h2>قصتنا</h2>
+          <p>تأسست دريم هاوس في عام 2025 بمهمة بسيطة: جعل عملية العثور على العقارات وشرائها في موريتانيا تجربة سلسة وممتعة. ما بدأ كمكتب صغير في نواكشوط تحول إلى وكالة العقارات الرائدة في البلاد.</p>
+          
+          <p>على مر السنين، ساعدنا آلاف العائلات في العثور على منازل أحلامهم، وساعدنا المستثمرين في تأمين عقارات مربحة، وساعدنا الشركات في إقامة مواقعها المثالية. فهمنا العميق لسوق العقارات الموريتاني، جنبًا إلى جنب مع التزامنا بخدمة استثنائية، جعلنا الخيار الموثوق لجميع احتياجات العقارات.</p>
+          
+          <p>اليوم، مع مكاتب في نواكشوط ونواذيبو وكيفة، نواصل توسيع نطاق وصولنا مع الحفاظ على الخدمة الشخصية التي كانت علامتنا التجارية منذ اليوم الأول.</p>
+        </div>
+        <div class="story-image">
+          <img src="/assets/images/about/office.jpg" alt="مكتب دريم هاوس" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- قسم قيمنا -->
+  <section class="our-values">
+    <div class="container">
+      <h2 class="section-title text-center">قيمنا</h2>
+      <p class="section-subtitle text-center">المبادئ التي توجه كل ما نقوم به</p>
+      
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="material-icons">verified_user</i>
+          </div>
+          <h3>النزاهة</h3>
+          <p>نؤمن بالتعاملات الصادقة والشفافة مع جميع عملائنا. لا توجد رسوم خفية، ولا مفاجآت.</p>
+        </div>
+        
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="material-icons">handshake</i>
+          </div>
+          <h3>العميل أولاً</h3>
+          <p>احتياجاتك وتفضيلاتك هي أولويتنا القصوى. نستمع بعناية للعثور على ما تبحث عنه بالضبط.</p>
+        </div>
+        
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="material-icons">star</i>
+          </div>
+          <h3>التميز</h3>
+          <p>نسعى للتميز في كل جانب من جوانب خدمتنا، من اختيار العقار إلى الدعم بعد البيع.</p>
+        </div>
+        
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="material-icons">public</i>
+          </div>
+          <h3>الخبرة المحلية</h3>
+          <p>معرفتنا العميقة بمناطق موريتانيا وأحيائها تضمن لك اتخاذ قرارات مستنيرة.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- قسم فريقنا -->
+  <section class="our-team">
+    <div class="container">
+      <h2 class="section-title text-center">تعرف على فريقنا</h2>
+      <p class="section-subtitle text-center">المحترفون المتفانون الذين يعملون للعثور على عقار أحلامك</p>
+      
+      <div class="team-grid">
+        <div class="team-member" *ngFor="let member of teamMembers">
+          <div class="member-image">
+            <img [src]="member.image" [alt]="member.name" />
+          </div>
+          <div class="member-info">
+            <h3>{{ member.name }}</h3>
+            <p class="member-position">{{ member.position }}</p>
+            <p class="member-bio">{{ member.bio }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- قسم إنجازاتنا -->
+  <section class="achievements">
+    <div class="container">
+      <h2 class="section-title text-center">إنجازاتنا</h2>
+      
+      <div class="achievements-grid">
+        <div class="achievement-card">
+          <div class="achievement-number">5000+</div>
+          <div class="achievement-text">عقار تم بيعه</div>
+        </div>
+        
+        <div class="achievement-card">
+          <div class="achievement-number">98%</div>
+          <div class="achievement-text">رضا العملاء</div>
+        </div>
+        
+        <div class="achievement-card">
+          <div class="achievement-number">15+</div>
+          <div class="achievement-text">سنوات من الخبرة</div>
+        </div>
+        
+        <div class="achievement-card">
+          <div class="achievement-number">3</div>
+          <div class="achievement-text">مواقع للمكاتب</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

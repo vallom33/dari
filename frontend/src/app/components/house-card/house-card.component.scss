@@ -1,0 +1,217 @@
+.house-card {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+  
+  &.featured {
+    border: 2px solid var(--secondary-color);
+  }
+}
+
+.card-image {
+  position: relative;
+  height: 250px;
+  overflow: hidden;
+  
+  .house-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  &:hover .house-image {
+    transform: scale(1.1);
+  }
+}
+
+.badge {
+  position: absolute;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  z-index: 2;
+}
+
+.featured-badge {
+  top: 1rem;
+  left: 1rem;
+  background: var(--secondary-color);
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  
+  .material-icons {
+    font-size: 1rem;
+  }
+}
+
+.price-badge {
+  top: 1rem;
+  right: 1rem;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  backdrop-filter: blur(10px);
+}
+
+.favorite-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 3;
+  
+  .material-icons {
+    color: var(--text-light);
+    transition: color 0.3s ease;
+  }
+  
+  &:hover,
+  &.active {
+    background: var(--primary-color);
+    
+    .material-icons {
+      color: white;
+    }
+  }
+}
+
+.image-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  color: white;
+  padding: 2rem 1.5rem 1.5rem;
+  
+  .house-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+  
+  .location {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.875rem;
+    opacity: 0.9;
+    
+    .material-icons {
+      font-size: 1rem;
+    }
+  }
+}
+
+.card-content {
+  padding: 1.5rem;
+}
+
+.property-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  
+  .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(225, 29, 72, 0.1);
+    padding: 0.75rem;
+    border-radius: 8px;
+    flex: 1;
+    margin: 0 0.25rem;
+    
+    .material-icons {
+      color: var(--primary-color);
+      font-size: 1.25rem;
+      margin-bottom: 0.25rem;
+    }
+    
+    span {
+      font-size: 0.875rem;
+      font-weight: 500;
+      text-align: center;
+    }
+  }
+}
+
+.property-type {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  .type-badge {
+    background: var(--background-light);
+    color: var(--text-dark);
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+  
+  .status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    
+    &.for_sale {
+      background: rgba(34, 197, 94, 0.1);
+      color: #16a34a;
+    }
+    
+    &.sold {
+      background: rgba(239, 68, 68, 0.1);
+      color: #dc2626;
+    }
+    
+    &.pending {
+      background: rgba(245, 158, 11, 0.1);
+      color: #d97706;
+    }
+  }
+}
+
+.card-footer {
+  padding: 0 1.5rem 1.5rem;
+  
+  .view-details-btn {
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+  }
+}
+
+@media (max-width: 768px) {
+  .property-stats {
+    .stat {
+      margin: 0 0.125rem;
+      padding: 0.5rem;
+      
+      span {
+        font-size: 0.75rem;
+      }
+    }
+  }
+}

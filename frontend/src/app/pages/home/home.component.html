@@ -1,0 +1,113 @@
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-slider">
+    <div class="hero-slide" 
+         *ngFor="let slide of heroSlides; let i = index"
+         [class.active]="i === currentSlide">
+      <div class="hero-image" [style.background-image]="'url(' + slide.image + ')'"></div>
+      <div class="hero-overlay"></div>
+    </div>
+  </div>
+  
+  <div class="hero-content">
+    <div class="container">
+      <div class="hero-text">
+        <h1 class="hero-title">اكتشف جمال السكن في موريتانيا</h1>
+        <p class="hero-subtitle">عقارات مميزة تناسب كل الأذواق والميزانيات</p>
+        <div class="hero-actions">
+          <a routerLink="/houses" class="btn-primary">
+            <i class="material-icons">search</i>
+            ابحث عن منزل
+          </a>
+          <a routerLink="/contact" class="btn-outline">
+            اتصل بنا
+            <i class="material-icons">arrow_forward</i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="hero-indicators">
+    <button *ngFor="let slide of heroSlides; let i = index"
+            (click)="goToSlide(i)"
+            [class.active]="i === currentSlide"
+            class="indicator"></button>
+  </div>
+</section>
+
+<!-- Search Section -->
+<section class="search-section section-padding">
+  <div class="container">
+    <h2 class="section-title text-center">ابحث عن منزل أحلامك</h2>
+    <app-search-filters (filtersChanged)="onFiltersChanged($event)"></app-search-filters>
+  </div>
+</section>
+
+<!-- Featured Properties -->
+<section class="featured-section section-padding">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">عقارات مميزة</h2>
+      <a routerLink="/houses" class="view-all-link">
+        عرض الكل
+        <i class="material-icons">arrow_forward</i>
+      </a>
+    </div>
+    
+    <div class="loading-spinner" *ngIf="loading"></div>
+    
+    <div class="houses-grid" *ngIf="!loading">
+      <app-house-card *ngFor="let house of featuredHouses" 
+                     [house]="house"
+                     [featured]="true"></app-house-card>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="features-section section-padding">
+  <div class="container">
+    <h2 class="section-title text-center">لماذا تختارنا؟</h2>
+    
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="material-icons">location_on</i>
+        </div>
+        <h3>مواقع استثنائية</h3>
+        <p>فلل فاخرة على شواطئ نواكشوط وشقق عصرية في قلب العاصمة</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="material-icons">star</i>
+        </div>
+        <h3>جودة عالية</h3>
+        <p>تصاميم مميزة ومساحات معيشة واسعة</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="material-icons">people</i>
+        </div>
+        <h3>خبرة محلية</h3>
+        <p>فريق خبراء يساعدك في إيجاد العقار المثالي</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-content">
+      <h2>ابدأ رحلتك لامتلاك المنزل اليوم</h2>
+      <p>انضم إلى آلاف العائلات التي وجدت منزل أحلامها</p>
+      <div class="cta-actions">
+        <a routerLink="/houses" class="btn-primary">تصفح العقارات</a>
+        <a routerLink="/contact" class="btn-outline">تواصل معنا</a>
+      </div>
+    </div>
+  </div>
+</section>

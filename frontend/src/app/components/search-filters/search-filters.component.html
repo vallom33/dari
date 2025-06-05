@@ -1,0 +1,115 @@
+<div class="search-filters card">
+  <div class="filters-grid">
+    <!-- City Filter -->
+    <div class="filter-group">
+      <label for="city">المدينة</label>
+      <select 
+        id="city" 
+        [(ngModel)]="filters.city" 
+        (change)="onCityChange()"
+        class="form-control">
+        <option value="">اختر المدينة</option>
+        <option *ngFor="let city of mauritaniaCities" [value]="city.value">
+          {{ city.label }}
+        </option>
+      </select>
+    </div>
+
+    <!-- Quartier Filter -->
+    <div class="filter-group">
+      <label for="quartier">الحي (الحي)</label>
+      <select 
+        id="quartier" 
+        [(ngModel)]="filters.quartier"
+        [disabled]="!filters.city || availableQuartiers.length === 0"
+        class="form-control">
+        <option value="">{{ availableQuartiers.length > 0 ? 'اختر الحي' : 'اختر المدينة أولاً' }}</option>
+        <option *ngFor="let quartier of availableQuartiers" [value]="quartier.value">
+          {{ quartier.label }}
+        </option>
+      </select>
+    </div>
+
+    <!-- Price Range -->
+    <div class="filter-group">
+      <label>نطاق السعر</label>
+      <div class="price-range">
+        <input 
+          type="range" 
+          [(ngModel)]="filters.minPrice"
+          min="0" 
+          max="200000000" 
+          step="1000000"
+          class="range-slider">
+        <input 
+          type="range" 
+          [(ngModel)]="filters.maxPrice"
+          min="0" 
+          max="200000000" 
+          step="1000000"
+          class="range-slider">
+        <div class="price-labels">
+          <span>{{ formatPrice(filters.minPrice || 0) }}</span>
+          <span>{{ formatPrice(filters.maxPrice || 200000000) }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Search Button -->
+    <div class="filter-group search-btn-group">
+      <button (click)="onSearch()" class="btn-primary search-btn">
+        <i class="material-icons">search</i>
+        بحث عن عقارات
+      </button>
+    </div>
+  </div>
+
+  <!-- Advanced Filters Toggle -->
+  <div class="advanced-toggle">
+    <button (click)="toggleAdvancedFilters()" class="btn-outline">
+      <i class="material-icons">tune</i>
+      {{ showAdvancedFilters ? 'إخفاء' : 'إظهار' }} الفلاتر المتقدمة
+    </button>
+  </div>
+
+  <!-- Advanced Filters -->
+  <div class="advanced-filters" [class.show]="showAdvancedFilters">
+    <div class="advanced-grid">
+      <!-- Property Type -->
+      <div class="filter-group">
+        <label for="propertyType">نوع العقار</label>
+        <select id="propertyType" [(ngModel)]="filters.propertyType" class="form-control">
+          <option value="">أي نوع</option>
+          <option *ngFor="let type of propertyTypes" [value]="type.value">
+            {{ type.label }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Bedrooms -->
+      <div class="filter-group">
+        <label for="minBedrooms">الحد الأدنى للغرف</label>
+        <select id="minBedrooms" [(ngModel)]="filters.minBedrooms" class="form-control">
+          <option value="">أي عدد</option>
+          <option value="1">1+</option>
+          <option value="2">2+</option>
+          <option value="3">3+</option>
+          <option value="4">4+</option>
+          <option value="5">5+</option>
+        </select>
+      </div>
+
+      <!-- Bathrooms -->
+      <div class="filter-group">
+        <label for="minBathrooms">الحد الأدنى للحمامات</label>
+        <select id="minBathrooms" [(ngModel)]="filters.minBathrooms" class="form-control">
+          <option value="">أي عدد</option>
+          <option value="1">1+</option>
+          <option value="2">2+</option>
+          <option value="3">3+</option>
+          <option value="4">4+</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>

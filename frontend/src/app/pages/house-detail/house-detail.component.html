@@ -1,0 +1,216 @@
+<div class="house-detail-page">
+  <!-- تحميل -->
+  <div class="loading-container" *ngIf="loading">
+    <div class="spinner"></div>
+    <p>جاري تحميل تفاصيل العقار...</p>
+  </div>
+
+  <!-- خطأ -->
+  <div class="error-container" *ngIf="error">
+    <div class="error-icon">
+      <i class="material-icons">error_outline</i>
+    </div>
+    <h2>العقار غير موجود</h2>
+    <p>لم نتمكن من العثور على العقار الذي تبحث عنه. قد يكون قد تم إزالته أو أن الرابط غير صحيح.</p>
+    <a routerLink="/houses" class="btn-primary">تصفح جميع العقارات</a>
+  </div>
+
+  <!-- تفاصيل العقار -->
+  <div class="house-content" *ngIf="house && !loading && !error">
+    <!-- الصور -->
+    <section class="image-gallery">
+      <div class="main-image">
+        <img
+          [src]="house.imageUrls[currentImageIndex] || '/assets/images/placeholder-house.jpg'"
+          [alt]="house.title"
+        />
+        <button
+          class="gallery-nav prev"
+          (click)="prevImage()"
+          *ngIf="house.imageUrls && house.imageUrls.length > 1"
+          [attr.aria-label]="'الصورة السابقة'"
+        >
+          <i class="material-icons">chevron_left</i>
+        </button>
+        <button
+          class="gallery-nav next"
+          (click)="nextImage()"
+          *ngIf="house.imageUrls && house.imageUrls.length > 1"
+          [attr.aria-label]="'الصورة التالية'"
+        >
+          <i class="material-icons">chevron_right</i>
+        </button>
+        <div class="image-counter" *ngIf="house.imageUrls && house.imageUrls.length > 1">
+          {{ currentImageIndex + 1 }}/{{ house.imageUrls.length }}
+        </div>
+      </div>
+
+      <div class="thumbnails" *ngIf="house.imageUrls && house.imageUrls.length > 1">
+        <button
+          *ngFor="let image of house.imageUrls; let i = index"
+          class="thumbnail"
+          [class.active]="i === currentImageIndex"
+          (click)="currentImageIndex = i"
+          [attr.aria-label]="'اختر الصورة ' + (i + 1)"
+        >
+          <img [src]="image" [alt]="house.title + ' صورة مصغرة ' + (i + 1)" />
+        </button>
+      </div>
+    </section>
+
+    <!-- العنوان -->
+    <section class="property-header">
+      <div class="container">
+        <div class="header-content">
+          <div class="property-title">
+            <h1>{{ house.title }}</h1>
+            <p class="location">
+              <i class="material-icons">location_on</i>
+              {{ house.quartier }}, {{ house.city }}
+            </p>
+          </div>
+
+          <div class="property-actions">
+            <div class="price">{{ formatPrice(house.price) }}</div>
+            <button
+              class="btn-favorite"
+              [class.active]="isFavorite"
+              (click)="toggleFavorite()"
+              [attr.aria-pressed]="isFavorite"
+              [attr.aria-label]="isFavorite ? 'إزالة من المفضلة' : 'إضافة إلى المفضلة'"
+            >
+              <i class="material-icons">{{ isFavorite ? 'favorite' : 'favorite_border' }}</i>
+              {{ isFavorite ? 'محفوظ' : 'حفظ' }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- التفاصيل -->
+    <section class="property-details">
+      <div class="container">
+        <div class="details-grid">
+          <div class="main-details">
+            <div class="features-bar">
+              <div class="feature">
+                <i class="material-icons">king_bed</i>
+                <div class="feature-text">
+                  <span class="feature-value">{{ house.bedrooms }}</span>
+                  <span class="feature-label">غرف نوم</span>
+                </div>
+              </div>
+
+              <div class="feature">
+                <i class="material-icons">bathtub</i>
+                <div class="feature-text">
+                  <span class="feature-value">{{ house.bathrooms }}</span>
+                  <span class="feature-label">حمامات</span>
+                </div>
+              </div>
+
+              <div class="feature">
+                <i class="material-icons">square_foot</i>
+                <div class="feature-text">
+                  <span class="feature-value">{{ house.sqft }}</span>
+                  <span class="feature-label">قدم مربع</span>
+                </div>
+              </div>
+
+              <div class="feature">
+                <i class="material-icons">home</i>
+                <div class="feature-text">
+                  <span class="feature-value">{{ house.propertyType }}</span>
+                  <span class="feature-label">نوع العقار</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="description">
+              <h2>الوصف</h2>
+              <p>{{ house.description }}</p>
+            </div>
+
+            <div class="property-features" *ngIf="house.features && house.features.length > 0">
+              <h2>مميزات العقار</h2>
+              <ul class="features-list">
+                <li *ngFor="let feature of house.features">
+                  <i class="material-icons">check_circle</i>
+                  <span>{{ feature }}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="property-sidebar">
+            <div class="agent-card">
+              <h3>اتصل بالوسيط</h3>
+              <div class="agent-info">
+                <div class="agent-image">
+                  <img
+                    [src]="house.agentImage || '/assets/images/agent-placeholder.jpg'"
+                    [alt]="house.agentName"
+                  />
+                </div>
+                <div class="agent-details">
+                  <h4>{{ house.agentName || 'وسيط دريم هاوس' }}</h4>
+                  <p class="agent-title">وسيط عقاري</p>
+                </div>
+              </div>
+
+              <div class="agent-contact">
+                <div class="contact-item">
+                  <i class="material-icons">phone</i>
+                  <span>{{ house.agentPhone || '+222 45 25 25 25' }}</span>
+                </div>
+                <div class="contact-item">
+                  <i class="material-icons">email</i>
+                  <span [innerHTML]="house.agentEmail || 'agent&#64;dreamhouse.mr'"></span>
+                </div>
+              </div>
+
+              <div class="contact-buttons">
+                <button
+                  class="btn-primary"
+                  (click)="openLink('tel:' + house.agentPhone)"
+                >
+                  <i class="material-icons">phone</i>
+                  اتصل
+                </button>
+                <button
+                  class="btn-outline"
+                  (click)="openLink('mailto:' + house.agentEmail)"
+                >
+                  <i class="material-icons">email</i>
+                  بريد إلكتروني
+                </button>
+              </div>
+            </div>
+
+            <div class="schedule-card">
+              <h3>حدد موعد زيارة</h3>
+              <p>اختر تاريخًا ووقتًا لزيارة هذا العقار</p>
+
+              <div class="form-group">
+                <label for="viewingDate">التاريخ المفضل</label>
+                <input type="date" id="viewingDate" class="form-control" />
+              </div>
+
+              <div class="form-group">
+                <label for="viewingTime">الوقت المفضل</label>
+                <select id="viewingTime" class="form-control">
+                  <option value="">اختر وقتًا</option>
+                  <option value="morning">الصباح (9 صباحًا - 12 ظهرًا)</option>
+                  <option value="afternoon">بعد الظهر (1 ظهرًا - 5 مساءً)</option>
+                  <option value="evening">المساء (6 مساءً - 8 مساءً)</option>
+                </select>
+              </div>
+
+              <button class="btn-primary w-100">طلب زيارة</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

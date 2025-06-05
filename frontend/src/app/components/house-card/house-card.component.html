@@ -1,0 +1,63 @@
+<div class="house-card card" [class.featured]="house.featured">
+  <div class="card-image">
+    <img [src]="mainImage" [alt]="house.title" class="house-image">
+    
+    <!-- Featured Badge -->
+    <div class="badge featured-badge" *ngIf="house.featured">
+      <i class="material-icons">star</i>
+      مميز
+    </div>
+    
+    <!-- Favorite Button -->
+    <button 
+      class="favorite-btn" 
+      [class.active]="isFavorite"
+      (click)="toggleFavorite($event)">
+      <i class="material-icons">{{ isFavorite ? 'favorite' : 'favorite_border' }}</i>
+    </button>
+    
+    <!-- Price Badge -->
+    <div class="badge price-badge">{{ formattedPrice }}</div>
+    
+    <!-- Image Overlay -->
+    <div class="image-overlay">
+      <h3 class="house-title">{{ house.title }}</h3>
+      <div class="location">
+        <i class="material-icons">location_on</i>
+        <span>{{ house.quartier }}, {{ house.city }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-content">
+    <!-- Property Stats -->
+    <div class="property-stats">
+      <div class="stat">
+        <i class="material-icons">bed</i>
+        <span>{{ house.bedrooms }} غرف</span>
+      </div>
+      <div class="stat">
+        <i class="material-icons">bathtub</i>
+        <span>{{ house.bathrooms }} حمامات</span>
+      </div>
+      <div class="stat">
+        <i class="material-icons">square_foot</i>
+        <span>{{ house.sqft }} م²</span>
+      </div>
+    </div>
+
+    <!-- Property Type -->
+    <div class="property-type">
+      <span class="type-badge">{{ house.propertyType }}</span>
+      <span class="status-badge" [class]="house.status.toLowerCase()">
+        {{ house.status.replace('_', ' ') }}
+      </span>
+    </div>
+  </div>
+
+  <div class="card-footer">
+    <a [routerLink]="['/houses', house.id]" class="btn-primary view-details-btn">
+      عرض التفاصيل
+    </a>
+  </div>
+</div>

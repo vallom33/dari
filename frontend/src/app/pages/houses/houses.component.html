@@ -1,0 +1,85 @@
+<div class="houses-page">
+  <!-- عنوان الصفحة -->
+  <section class="page-header">
+    <div class="container">
+      <h1 class="page-title">ابحث عن منزل أحلامك في موريتانيا</h1>
+      <p class="page-subtitle">اكتشف العقار المثالي من مجموعتنا الواسعة</p>
+    </div>
+  </section>
+
+  <!-- عوامل التصفية -->
+  <section class="filters-section">
+    <div class="container">
+      <app-search-filters (filtersChanged)="onFiltersChanged($event)"></app-search-filters>
+    </div>
+  </section>
+
+  <!-- قسم النتائج -->
+  <section class="results-section">
+    <div class="container">
+      <!-- عنوان النتائج -->
+      <div class="results-header">
+        <div class="results-info">
+          <h2>العقارات المتاحة</h2>
+          <p *ngIf="!loading">عرض {{ houses.length }} من أصل {{ totalElements }} عقار</p>
+        </div>
+        
+        <div class="sort-controls" *ngIf="!loading && houses.length > 0">
+          <label for="sort">ترتيب حسب:</label>
+          <select id="sort" class="form-control">
+            <option value="newest">الأحدث أولاً</option>
+            <option value="price-asc">السعر: من الأقل إلى الأعلى</option>
+            <option value="price-desc">السعر: من الأعلى إلى الأقل</option>
+            <option value="size-desc">المساحة: من الأكبر إلى الأصغر</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- حالة التحميل -->
+      <div class="loading-spinner" *ngIf="loading"></div>
+
+      <!-- لا توجد نتائج -->
+      <div class="no-results" *ngIf="!loading && houses.length === 0">
+        <div class="no-results-content">
+          <i class="material-icons">search_off</i>
+          <h3>لا توجد عقارات</h3>
+          <p>حاول تعديل عوامل التصفية للعثور على المزيد من العقارات.</p>
+          <button (click)="onFiltersChanged({})" class="btn-primary">مسح الفلاتر</button>
+        </div>
+      </div>
+
+      <!-- شبكة العقارات -->
+      <div class="houses-grid" *ngIf="!loading && houses.length > 0">
+        <app-house-card 
+          *ngFor="let house of houses" 
+          [house]="house">
+        </app-house-card>
+      </div>
+
+      <!-- الترقيم -->
+      <div class="pagination" *ngIf="!loading && totalPages > 1">
+        <button 
+          class="pagination-btn"
+          [disabled]="currentPage === 0"
+          (click)="onPageChange(currentPage - 1)">
+          <i class="material-icons">chevron_left</i>
+        </button>
+
+        <button 
+          *ngFor="let page of pageNumbers"
+          class="pagination-btn"
+          [class.active]="page === currentPage"
+          (click)="onPageChange(page)">
+          {{ page + 1 }}
+        </button>
+
+        <button 
+          class="pagination-btn"
+          [disabled]="currentPage === totalPages - 1"
+          (click)="onPageChange(currentPage + 1)">
+          <i class="material-icons">chevron_right</i>
+        </button>
+      </div>
+    </div>
+  </section>
+</div>
