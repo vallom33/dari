@@ -1,10 +1,11 @@
-com\dreamhouse\DreamHouseApplication.class
 com\dreamhouse\model\House$PropertyStatus.class
+com\dreamhouse\repository\HouseRepository.class
+com\dreamhouse\DreamHouseApplication.class
 com\dreamhouse\controller\HouseController.class
 com\dreamhouse\model\User$Role.class
-com\dreamhouse\repository\HouseRepository.class
 com\dreamhouse\model\House$PropertyType.class
 com\dreamhouse\repository\UserRepository.class
 com\dreamhouse\model\House.class
 com\dreamhouse\model\User.class
 com\dreamhouse\service\HouseService.class
+com\dreamhouse\service\UserDetailsServiceImpl.class

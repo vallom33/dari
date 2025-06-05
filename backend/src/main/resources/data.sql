@@ -53,3 +53,7 @@ INSERT INTO house_images (house_id, image_url) VALUES
 (10, '/placeholder.svg?height=600&width=800'), (10, '/placeholder.svg?height=600&width=800'), (10, '/placeholder.svg?height=600&width=800'), (10, '/placeholder.svg?height=600&width=800'),
 (11, '/placeholder.svg?height=600&width=800'), (11, '/placeholder.svg?height=600&width=800'), (11, '/placeholder.svg?height=600&width=800'),
 (12, '/placeholder.svg?height=600&width=800'), (12, '/placeholder.svg?height=600&width=800');
+
+-- Insert admin user
+INSERT INTO users (email, password, role, email_verified, created_at, updated_at)
+VALUES ('admin@dreamhouse.mr', '{noop}admin123', 'ADMIN', true, NOW(), NOW());
