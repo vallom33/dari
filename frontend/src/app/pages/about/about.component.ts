@@ -21,7 +21,7 @@ export class AboutComponent {
       name: "Abdou  jeddou",
       position: "Founder & CEO",
       bio: "With over 15 years of experience in Mauritanian real estate, abdou founded DreamHouse with a vision to transform the property market.",
-      image: "/assets/images/team/ahmed.jpg",
+      image: "/assets/images/team/abdou.jpg",
     },
    
     {
