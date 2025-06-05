@@ -18,28 +18,18 @@ interface TeamMember {
 export class AboutComponent {
   teamMembers: TeamMember[] = [
     {
-      name: "Ahmed Diallo",
+      name: "Abdou  jeddou",
       position: "Founder & CEO",
-      bio: "With over 15 years of experience in Mauritanian real estate, Ahmed founded DreamHouse with a vision to transform the property market.",
+      bio: "With over 15 years of experience in Mauritanian real estate, abdou founded DreamHouse with a vision to transform the property market.",
       image: "/assets/images/team/ahmed.jpg",
     },
+   
     {
-      name: "Fatima Mint Mohamed",
-      position: "Chief Operations Officer",
-      bio: "Fatima oversees all operations and ensures that our clients receive the highest level of service throughout their property journey.",
-      image: "/assets/images/team/fatima.jpg",
-    },
-    {
-      name: "Omar Sy",
+      name: "Omar vall",
       position: "Head of Sales",
       bio: "Omar leads our talented sales team and has personally helped hundreds of families find their perfect home in Mauritania.",
       image: "/assets/images/team/omar.jpg",
     },
-    {
-      name: "Aisha Camara",
-      position: "Marketing Director",
-      bio: "Aisha brings creative marketing strategies that showcase our properties to the right audience across Mauritania and beyond.",
-      image: "/assets/images/team/aisha.jpg",
-    },
+    
   ]
 }
