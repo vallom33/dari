@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold" routerLink="/">🏠 داري</a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav text-end">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/" routerLinkActive="active">الرئيسية</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/properties">العقارات</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/about">من نحن</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/contact">اتصل بنا</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-danger me-2" routerLink="/favorites">المفضلة</a>
+          <a class="btn btn-danger" routerLink="/login">تسجيل الدخول</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
